@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  # nats:
+  #   image: nats:latest
+  #   entrypoint: /nats-server
+  #   command: "-c /server.conf"
+  #   ports:
+  #     - "4222:4222"
+  #   volumes:
+  #     - ./server.conf:/server.conf
+  #   # healthcheck:
+  #   #   test: ["CMD", "nc", "-z", "localhost", "4222"]
+  #   #   interval: 10s
+  #   #   timeout: 5s
+  #   #   retries: 3
+  #   restart: always
+
+  app:
+    build: .
+    container_name: bot
+    # depends_on:
+    #   nats
+    environment:
+      - NATS_SERVER=nats:4222
